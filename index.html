@@ -30,7 +30,7 @@
       color: #2c3e50;
     }
 
-    .phase {
+    .phase, .glossary-section {
       background-color: white;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -39,7 +39,7 @@
       transition: all 0.3s ease-in-out;
     }
 
-    .phase-header {
+    .phase-header, .glossary-header {
       background-color: #3498db;
       color: white;
       cursor: pointer;
@@ -50,29 +50,32 @@
       align-items: center;
     }
 
-    .phase-header:hover {
+    .phase-header:hover, .glossary-header:hover {
       background-color: #2980b9;
     }
 
-    .phase-content {
+    .phase-content, .glossary-content {
       display: none;
       padding: 1.5rem;
       background-color: #ecf0f1;
       border-top: 1px solid #ccc;
     }
 
-    .phase.open .phase-content {
+    .phase.open .phase-content,
+    .glossary-section.open .glossary-content {
       display: block;
     }
 
-    .phase.open .phase-header::after {
-      content: "▼";
-    }
-
-    .phase-header::after {
+    .phase-header::after,
+    .glossary-header::after {
       content: "▶";
       font-size: 0.9rem;
       transition: transform 0.3s ease;
+    }
+
+    .phase.open .phase-header::after,
+    .glossary-section.open .glossary-header::after {
+      content: "▼";
     }
 
     footer {
@@ -101,6 +104,14 @@
       border-radius: 6px;
       margin-top: 2rem;
     }
+
+    .glossary-term {
+      margin-bottom: 1rem;
+    }
+
+    .glossary-term strong {
+      color: #2c3e50;
+    }
   </style>
 </head>
 <body>
@@ -113,6 +124,7 @@
 
 <div class="container">
 
+  <!-- Fases -->
   <div class="phase">
     <div class="phase-header">Fase 1 – Investigación y Análisis Técnico</div>
     <div class="phase-content">
@@ -222,6 +234,37 @@
     </ul>
   </div>
 
+  <!-- Glosario -->
+  <div class="glossary-section">
+    <div class="glossary-header">Glosario Técnico</div>
+    <div class="glossary-content">
+      <div class="glossary-term">
+        <strong>Gemini:</strong> Modelo avanzado de inteligencia artificial desarrollado por Google, capaz de entender y generar texto, imágenes, audio y más.
+      </div>
+      <div class="glossary-term">
+        <strong>Vertex AI:</strong> Plataforma de inteligencia artificial de Google Cloud que permite entrenar, desplegar y gestionar modelos de IA.
+      </div>
+      <div class="glossary-term">
+        <strong>ClickFunnels for Courses (CFC):</strong> Herramienta de creación de cursos online y embudos de ventas usada por David Reyes.
+      </div>
+      <div class="glossary-term">
+        <strong>API:</strong> Interfaz de programación que permite que dos sistemas se comuniquen entre sí, como el chatbot y CFC.
+      </div>
+      <div class="glossary-term">
+        <strong>Entrenamiento personalizado:</strong> Proceso en el que un modelo de IA es ajustado con datos específicos de un negocio o industria.
+      </div>
+      <div class="glossary-term">
+        <strong>Endpoints:</strong> Puntos de conexión donde una aplicación puede acceder a servicios externos, como el chatbot desde una página web.
+      </div>
+      <div class="glossary-term">
+        <strong>Soporte post-lanzamiento:</strong> Asistencia técnica continua después de entregar el producto final.
+      </div>
+      <div class="glossary-term">
+        <strong>Optimización:</strong> Mejora continua del rendimiento del chatbot basada en retroalimentación real de los usuarios.
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <footer>
@@ -230,7 +273,7 @@
 </footer>
 
 <script>
-  document.querySelectorAll('.phase-header').forEach(header => {
+  document.querySelectorAll('.phase-header, .glossary-header').forEach(header => {
     header.addEventListener('click', () => {
       header.parentElement.classList.toggle('open');
     });
